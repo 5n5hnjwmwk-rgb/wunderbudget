@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — WunderBudget</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #f9f9f7;
+            padding: 40px 20px 60px;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .app-name { font-size: 26px; font-weight: 600; color: #1a1a1a; }
+        .app-tagline { font-size: 14px; color: #888; margin-top: 2px; }
+
+        h1 { font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+        .subtitle { font-size: 15px; color: #888; margin-bottom: 40px; }
+
+        /* Quick start steps */
+        .steps { margin-bottom: 48px; }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #5F27CD;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-content h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .step-content .tip {
+            display: inline-block;
+            background: #f0fdf4;
+            border-left: 3px solid #22c55e;
+            padding: 8px 12px;
+            border-radius: 0 6px 6px 0;
+            margin-top: 8px;
+            font-size: 14px;
+            color: #166534;
+        }
+
+        /* Section divider */
+        .section-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #999;
+            margin: 48px 0 20px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .faq-question:hover { background: #fafafa; }
+
+        .faq-chevron {
+            font-size: 12px;
+            color: #aaa;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 16px;
+            font-size: 15px;
+            color: #555;
+            line-height: 1.65;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .faq-item.open .faq-answer { display: block; }
+
+        .faq-answer p { margin-top: 12px; }
+        .faq-answer p:first-child { margin-top: 12px; }
+
+        /* Contact */
+        .contact {
+            margin-top: 48px;
+            padding: 24px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .contact p { font-size: 15px; color: #666; }
+        .contact a { color: #5F27CD; text-decoration: none; font-weight: 500; }
+        .contact a:hover { text-decoration: underline; }
+
+        /* Dark mode */
+        @media (prefers-color-scheme: dark) {
+            body { background: #111; color: #f0f0f0; }
+            .app-name { color: #f0f0f0; }
+            h1 { color: #f0f0f0; }
+            .subtitle { color: #666; }
+            .step-content h3 { color: #f0f0f0; }
+            .step-content p { color: #aaa; }
+            .step-number { background: #7c3aed; }
+            .faq-item { background: #1c1c1e; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+            .faq-question { color: #f0f0f0; }
+            .faq-question:hover { background: #2c2c2e; }
+            .faq-answer { color: #aaa; border-top-color: #2c2c2e; }
+            .tip { background: #052e16 !important; color: #86efac !important; }
+            .contact { background: #1c1c1e; }
+            .contact p { color: #888; }
+            .contact a { color: #a78bfa; }
+            .section-title { color: #555; }
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 24px 16px 48px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="app-header">
+            <img src="icon.png" alt="WunderBudget" class="app-icon">
+            <div>
+                <div class="app-name">WunderBudget</div>
+                <div class="app-tagline">WunderBudget helps keep you under budget.</div>
+            </div>
+        </div>
+
+        <h1>Getting Started</h1>
+        <p class="subtitle">Up and running in minutes.</p>
+
+        <p style="margin-bottom: 32px; font-size: 15px; color: #555;">Looking for help with something specific? Jump to <a href="#faq" style="color: #5F27CD; text-decoration: none; font-weight: 500;">FAQs</a>, <a href="#troubleshooting" style="color: #5F27CD; text-decoration: none; font-weight: 500;">Troubleshooting</a>, or <a href="#subscription" style="color: #5F27CD; text-decoration: none; font-weight: 500;">Subscription & Billing</a>.</p>
+
+        <!-- Quick Start -->
+        <div class="steps">
+
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Create your WunderBudget account</h3>
+                    <p>When you first open the app, tap <strong>Create Account</strong> and enter your email address and a password. You'll receive a verification email — tap the link inside to confirm your address, then return to the app and sign in.</p>
+                    <p style="margin-top: 10px;">Next, set up two-factor authentication (2FA) to protect your account. You can choose an <strong>authenticator app</strong> (such as Google Authenticator or Authy) or receive a <strong>one-time code by SMS</strong>. You'll be prompted to set this up after your first sign-in — it only takes about a minute and keeps your financial data secure.</p>
+                    <span class="tip">✓ 2FA is required. You can switch between authenticator app and SMS at any time in <strong>Settings → Security</strong>.</span>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Connect your bank</h3>
+                    <p>Tap the <strong>Accounts</strong> tab, then <strong>Connect a bank account</strong>. Search for your bank and sign in securely through Plaid — WunderBudget never sees your bank credentials.</p>
+                    <span class="tip">✓ Most major US banks are supported including Chase, Bank of America, Wells Fargo, and thousands of credit unions.</span>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Sync your transactions</h3>
+                    <p>Tap <strong>Sync all accounts</strong> on the Accounts tab. WunderBudget will import up to 90 days of transaction history and automatically categorize everything using AI. This takes about 3–5 minutes on first sync.</p>
+                    <span class="tip">✓ You'll see a live progress bar as your transactions import and get categorized.</span>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Review low-confidence transactions</h3>
+                    <p>After syncing, an orange badge may appear on the <strong>Transactions</strong> tab. These are transactions the AI wasn't sure about. Swipe right to confirm the suggested category, or tap the tag icon to pick a different one.</p>
+                    <span class="tip">✓ Each review you complete teaches the app — next sync those merchants get categorized automatically.</span>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Set up your budget</h3>
+                    <p>Tap the <strong>Budgets</strong> tab. Navigate to the current month and tap any category to set a monthly limit. The donut chart updates live as you enter amounts so you can see your total budget take shape.</p>
+                    <span class="tip">✓ Only enter limits for categories you actively want to track — leave the rest blank.</span>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h3>Clone to next month</h3>
+                    <p>Once your budget looks right, tap the <strong>copy icon</strong> (top right of the Budgets tab) to clone your budget to the next month. Adjust anything that changes — like a different tax payment or irregular expense — and you're set.</p>
+                    <span class="tip">✓ Cloning takes seconds and keeps your budget setup consistent month to month.</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FAQ -->
+        <div class="section-title" id="faq">Frequently Asked Questions</div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                How does the AI categorization work?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>After your transactions are imported, WunderBudget sends them in batches to Claude (an AI by Anthropic) along with your category list. Claude reads the merchant name, amount, and transaction type to assign the most likely category.</p>
+                <p>High-confidence assignments (85%+) are applied automatically and a merchant rule is saved so future transactions from the same merchant are categorized instantly without AI. Low-confidence items are flagged for your review.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                Why are some transactions uncategorized?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>A few types of transactions are genuinely ambiguous — paper checks, obscure merchant names, or transactions where the context isn't clear. These are left as "Unknown" and appear in the review queue for you to categorize manually.</p>
+                <p>Once you assign a category, a merchant rule is created and that merchant will be recognized automatically on future syncs.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                How often should I sync?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Sync whenever you want to see your latest transactions — daily, weekly, or whenever you're checking your budget. WunderBudget only fetches what's new since your last sync, so it's fast after the first time.</p>
+                <p>Note: WunderBudget relies on Plaid to fetch transaction data. Plaid typically refreshes bank data every few hours, so very recent transactions may take a short time to appear.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                What are merchant rules?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Merchant rules are shortcuts that remember how you've categorized a merchant before. When a transaction comes in from a known merchant, WunderBudget applies the saved category instantly — no AI needed.</p>
+                <p>Rules are created automatically when the AI assigns a high-confidence category, or when you confirm a category during review. You can view and edit all rules in <strong>Settings → Merchant Rules</strong>. Changing a rule gives you the option to apply the new category to all matching transactions at once.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                Can I add or customize categories?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Yes. Go to <strong>Settings → Categories</strong> to add, rename, archive, or set monthly limits on any category. You can also import a custom category list from a CSV file using the download icon in the top right of the Categories screen.</p>
+                <p>The AI will automatically use whatever categories you have set up when categorizing new transactions.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                How do I handle accounts I don't want to budget?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>On the <strong>Accounts</strong> tab, use the toggle next to each account to include or exclude it from syncing. Toggling an account off means its transactions won't appear in your budgets or transaction list — useful for savings accounts or CDs you track separately.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                Is my financial data secure?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Yes. WunderBudget uses Plaid to connect to your bank — your credentials are entered directly into Plaid's secure interface and are never visible to WunderBudget. Transaction data is stored on AWS infrastructure with encryption at rest and in transit.</p>
+                <p>WunderBudget does not sell your data or share it with advertisers. See our <a href="https://widgetaldigital.com/wunderbudget/privacy.html">Privacy Policy</a> for full details.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                How do I disconnect a bank account?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Go to the <strong>Accounts</strong> tab, swipe left on the account you want to remove, and tap <strong>Disconnect</strong>. This immediately revokes WunderBudget's access to that account through Plaid. Your existing transaction history is not deleted.</p>
+                <p>You can also manage connected apps directly at <a href="https://my.plaid.com">my.plaid.com</a>.</p>
+            </div>
+        </div>
+
+        <!-- Troubleshooting -->
+        <div class="section-title" id="troubleshooting">Troubleshooting</div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                I can't sign in — what should I do?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>First, make sure you're using the email address and password you registered with. Passwords are case-sensitive.</p>
+                <p>If you've forgotten your password, tap <strong>Forgot password?</strong> on the sign-in screen. You'll receive a reset code by email — enter it in the app and choose a new password.</p>
+                <p>If you're not receiving emails, check your spam folder. Still stuck? Email us at <a href="mailto:support@widgetaldigital.com">support@widgetaldigital.com</a> and we'll sort it out.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                My sync isn't working or transactions aren't appearing
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>A few things to check:</p>
+                <p><strong>Account is toggled on.</strong> On the Accounts tab, make sure the account you expect to see has its toggle enabled. Toggled-off accounts don't sync.</p>
+                <p><strong>Pending transactions.</strong> WunderBudget only imports settled transactions — pending charges from your bank won't appear until they post, usually within 1-3 business days.</p>
+                <p><strong>Plaid connection expired.</strong> Bank connections occasionally need to be re-authorized. If you see a warning on the Accounts tab, tap it to reconnect through Plaid.</p>
+                <p><strong>Very recent transactions.</strong> Plaid refreshes bank data every few hours. Transactions from the last few hours may not be available yet.</p>
+                <p>If none of these apply, try disconnecting and reconnecting your bank on the Accounts tab. Your existing transaction history won't be deleted.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                I'm not receiving my two-factor authentication code
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p><strong>Authenticator app:</strong> Make sure your phone's clock is synced correctly — TOTP codes are time-based and will fail if your device clock is off. Check Settings → General → Date & Time and enable "Set Automatically."</p>
+                <p><strong>SMS code:</strong> Check that you have cell service or a data connection. Codes expire after a few minutes — tap Resend if it doesn't arrive within 30 seconds.</p>
+                <p>You can switch between authenticator app and SMS at any time in <strong>Settings → Security</strong> inside the app.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                Transactions are being put in the wrong category
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Tap the transaction, tap the category, and select the correct one. You'll be asked if you want to apply that category to all transactions from the same merchant — tap <strong>Update all</strong> to fix past and future transactions in one step.</p>
+                <p>WunderBudget learns from every correction. That merchant will be categorized correctly on every future sync.</p>
+            </div>
+        </div>
+
+        <!-- Subscription & Billing -->
+        <div class="section-title" id="subscription">Subscription &amp; Billing</div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                How does the free trial work?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Every new account gets a 7-day free trial with full access to all premium features — no credit card required to start. You won't be charged until the trial ends.</p>
+                <p>At the end of the trial, you'll be prompted to subscribe to continue using premium features. If you don't subscribe, your transaction history and budgets remain accessible but bank syncing, Reports, and Net Worth will be paused until you subscribe.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                What's included in WunderBudget Premium?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>Premium includes everything:</p>
+                <p>- All bank connections (checking, savings, credit cards)<br>
+                - Full Reports suite: Spending Breakdown, Monthly Trends, Deep Dive, Credit Card Dashboard<br>
+                - Net Worth tracking with manual asset entry<br>
+                - All future premium features</p>
+                <p>Plans: <strong>$4.99/month</strong> or <strong>$44.99/year</strong> (save 25%).</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                How do I cancel my subscription?
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>WunderBudget subscriptions are managed through Apple. To cancel:</p>
+                <p>1. Open the <strong>Settings</strong> app on your iPhone<br>
+                2. Tap your name at the top<br>
+                3. Tap <strong>Subscriptions</strong><br>
+                4. Tap <strong>WunderBudget</strong><br>
+                5. Tap <strong>Cancel Subscription</strong></p>
+                <p>You'll keep access to premium features until the end of your current billing period. Your transaction history and budgets are never deleted.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                I was charged but the app says my trial expired
+                <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+                <p>This is usually a sync delay between Apple and the app. Try these steps:</p>
+                <p>1. Open WunderBudget and go to <strong>Settings</strong><br>
+                2. Scroll to the bottom and tap <strong>Restore Purchases</strong><br>
+                3. If that doesn't resolve it, force-quit the app and reopen it</p>
+                <p>If you're still seeing the issue after a few minutes, email us at <a href="mailto:support@widgetaldigital.com">support@widgetaldigital.com</a> with your Apple ID email and we'll investigate right away.</p>
+            </div>
+        </div>
+
+        <div class="contact">
+            <p>Still have questions? We're happy to help.<br>
+            Email us at <a href="mailto:support@wunderbudget.com">support@wunderbudget.com</a> and we'll get back to you within one business day.</p>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleFAQ(btn) {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            // Close all
+            document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+            // Open this one if it was closed
+            if (!isOpen) item.classList.add('open');
+        }
+    </script>
+</body>
+</html>
