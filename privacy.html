@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wunderBudget Privacy Policy</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: #f9f9f7;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 48px 48px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #ebebeb;
+        }
+        .app-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+        .app-name { font-size: 26px; font-weight: 600; color: #1a1a1a; }
+        .app-tagline { font-size: 14px; color: #888; margin-top: 2px; }
+        h1 { font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+        .updated { font-size: 13px; color: #999; margin-bottom: 32px; }
+        h2 { font-size: 16px; font-weight: 600; color: #1a1a1a; margin-top: 32px; margin-bottom: 8px; }
+        p { color: #444; margin-bottom: 12px; }
+        ul { color: #444; margin: 0 0 12px 24px; }
+        ul li { margin-bottom: 6px; }
+        .highlight {
+            background: #f0fdf4;
+            border-left: 3px solid #22c55e;
+            padding: 14px 18px;
+            border-radius: 0 8px 8px 0;
+            margin: 24px 0;
+            color: #166534;
+            font-size: 15px;
+        }
+        .contact {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid #ebebeb;
+            font-size: 14px;
+            color: #888;
+        }
+        .contact a { color: #5F27CD; text-decoration: none; }
+        .contact a:hover { text-decoration: underline; }
+        @media (max-width: 600px) { .container { padding: 32px 24px; } }
+        @media (prefers-color-scheme: dark) {
+            body { background: #111; color: #f0f0f0; }
+            .container { background: #1c1c1e; box-shadow: 0 1px 4px rgba(0,0,0,0.4); }
+            h1, h2, .app-name { color: #f0f0f0; }
+            p, ul { color: #aaa; }
+            .updated { color: #666; }
+            .highlight { background: #052e16; border-color: #22c55e; color: #86efac; }
+            .app-tagline { color: #666; }
+            .contact { color: #666; border-top-color: #2c2c2e; }
+            .contact a { color: #a78bfa; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="app-header">
+            <img src="icon.png" alt="wunderBudget" class="app-icon">
+            <div>
+                <div class="app-name">wunderBudget</div>
+                <div class="app-tagline">Personal budgeting, powered by your bank.</div>
+            </div>
+        </div>
+
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated: May 7, 2026</p>
+
+        <div class="highlight">
+            wunderBudget does not sell your data. Your financial information is used solely to provide you with budgeting features and is never shared with advertisers or data brokers.
+        </div>
+
+        <h2>Overview</h2>
+        <p>wunderBudget connects to your bank accounts to automatically import and categorize transactions. To provide this service, wunderBudget uses Plaid to access your financial data and AWS to securely process and store it. This policy explains what data is collected, how it is used, and the controls you have over it.</p>
+
+        <h2>Information We Collect</h2>
+        <p>When you use wunderBudget, we collect the following information:</p>
+        <ul>
+            <li><strong>Account information:</strong> Your email address, used to create and authenticate your wunderBudget account via Amazon Cognito. Your email is stored exclusively within Cognito (encrypted at rest) and is never written to our application database — it is used solely for account verification, password resets, and two-factor authentication.</li>
+            <li><strong>Bank account data:</strong> Account names, account types, and last-four digits of account numbers, provided by Plaid when you connect a financial institution.</li>
+            <li><strong>Transaction data:</strong> Transaction dates, amounts, merchant names, and categories from your connected bank accounts, covering up to 90 days of history.</li>
+            <li><strong>Budgeting data:</strong> Budget amounts, categories, and merchant rules you create within the app, stored in your account on AWS.</li>
+        </ul>
+
+        <h2>How We Use Your Information</h2>
+        <p>We use your information solely to provide the wunderBudget service:</p>
+        <ul>
+            <li>To display your transactions and account balances within the app</li>
+            <li>To automatically categorize transactions using AI (Claude, by Anthropic)</li>
+            <li>To generate budget summaries and spending reports</li>
+            <li>To authenticate your account and keep your data secure</li>
+        </ul>
+        <p>We do not use your financial data for advertising, profiling, or any purpose other than providing the budgeting service you have requested.</p>
+
+        <h2>Plaid</h2>
+        <p>wunderBudget uses Plaid Technologies, Inc. to connect to your financial institutions. When you link a bank account, Plaid presents its own consent screen explaining exactly what data wunderBudget is requesting before any access is granted. You must explicitly approve this access before Plaid shares any data with wunderBudget.</p>
+        <p>Plaid maintains a secure cache of your financial data to provide reliable access to your transaction history. This cached data is subject to Plaid's own retention and deletion policies, which are described in <a href="https://plaid.com/legal/#consumers" target="_blank">Plaid's Consumer Privacy Policy</a>.</p>
+        <p>You can view and manage all apps connected to your financial accounts, including wunderBudget, at <a href="https://my.plaid.com" target="_blank">my.plaid.com</a>. You have two ways to revoke wunderBudget's access to your financial data:</p>
+        <ul>
+            <li>Disconnect your bank account from within the wunderBudget app (Settings → bank account → Disconnect)</li>
+            <li>Revoke access directly through Plaid's consumer portal at <a href="https://my.plaid.com" target="_blank">my.plaid.com</a></li>
+        </ul>
+        <p>Either method will permanently terminate wunderBudget's ability to access your financial data through Plaid.</p>
+
+        <h2>AWS Infrastructure</h2>
+        <p>wunderBudget uses Amazon Web Services (AWS) to process and store your data securely. This includes:</p>
+        <ul>
+            <li><strong>Amazon Cognito:</strong> Manages your account authentication. Your email address is stored exclusively in Cognito, encrypted at rest using AES-256. The rest of our systems identify you only by an opaque unique identifier (UUID) — your email is never passed to our application database or included in logs.</li>
+            <li><strong>AWS Lambda:</strong> Processes transaction data on your behalf</li>
+            <li><strong>Amazon DynamoDB:</strong> Stores your bank connection information, budgeting data, and transaction sync state. Records are keyed by your unique identifier — no email address is stored here.</li>
+        </ul>
+        <p>All data stored on AWS is encrypted at rest and in transit. Your data is stored in the United States.</p>
+
+        <h2>AI Categorization</h2>
+        <p>wunderBudget uses Claude, an AI assistant made by Anthropic, to automatically categorize your transactions. Transaction titles and amounts are sent to our secure backend for categorization. No personally identifiable information beyond merchant names and amounts is used for this purpose. Anthropic's use of data submitted via API is governed by <a href="https://www.anthropic.ic/legal/privacy" target="_blank">Anthropic's Privacy Policy</a>.</p>
+
+        <h2>Data Retention</h2>
+        <p>Your transaction data and account information are retained for as long as your wunderBudget account is active. If you disconnect a bank account, the associated access credentials are permanently removed from our systems. You may request deletion of all your data at any time by contacting us at <a href="mailto:privacy@widgetaldigital.com">privacy@widgetaldigital.com</a>.</p>
+
+        <h2>Subscriptions</h2>
+        <p>wunderBudget offers paid subscription plans managed through Apple's App Store. Subscription payments are processed by Apple and are subject to Apple's privacy policy. wunderBudget does not have access to your payment card information.</p>
+
+        <h2>Analytics and Tracking</h2>
+        <p>wunderBudget does not use any advertising SDKs, behavioral analytics frameworks, or cross-app tracking technologies. We do not share any data with data brokers or advertising networks.</p>
+
+        <h2>Children's Privacy</h2>
+        <p>wunderBudget is not directed at children under the age of 13 and does not knowingly collect information from children. If you believe a child has provided us with personal information, please contact us and we will delete it promptly.</p>
+
+        <h2>Your Rights</h2>
+        <p>You have the right to access, correct, or delete your personal data at any time. You can disconnect your bank accounts and delete your budgeting data directly within the app. For account deletion or other data requests, contact us at <a href="mailto:privacy@widgetaldigital.com">privacy@widgetaldigital.com</a>.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>If we make material changes to this privacy policy, we will update the date at the top of this page and, where appropriate, notify you within the app. Continued use of the app after changes constitutes acceptance of the updated policy.</p>
+
+        <div class="contact">
+            Questions about this privacy policy? Contact us at <a href="mailto:privacy@wunderbudget.com">privacy@wunderbudget.com</a>
+        </div>
+
+    </div>
+</body>
+</html>
